@@ -2,6 +2,7 @@
 #define UTILS_H
 
 #include <vector>
+#include <string>
 
 struct Data
 {
@@ -11,8 +12,8 @@ struct Data
 
 
 
-// compute dot produst of two arrays
-float dot(const float x[], const float y[], int size);
+// 
+void load_data(::Data &data, std::string path, std:: string mode);
 
 
 #endif

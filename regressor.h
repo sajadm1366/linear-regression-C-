@@ -18,6 +18,8 @@ public:
     float predict(float x_new);
     float getWeight();
     float getBias();
+    void setWeight(float w);
+    void setBias(float b);
 };
 
 

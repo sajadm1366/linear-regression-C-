@@ -1,15 +1,51 @@
 #include <iostream>
 #include "utils.h"
+#include <fstream>
+#include <string>
 
 
+using namespace std;
 
-float dot(const float x[], const float y[], int size)
-{
-    float dot_product=0;
-    for (int i = 0; i < size; i++)
+void load_data(Data &data, std::string path, string mode){
+    /*
+    load the data ans store into vectors
+    inputs:
+        data: an empty struct x, y
+        path: path of the data in .txt format
+    outputs:
+        data: fill up data x, y
+    */
+
+    std::string line;
+    int pos;
+    if (mode == "train")
     {
-        dot_product += x[i] * y[i];
+       std::string x, y;
+    
+
+    std::ifstream myfile (path);
+    while (getline(myfile, line) )
+    {
+      pos = line.find("\t");
+      x = line.substr(0, pos);
+      y = line.substr(pos+1);
+      data.x.push_back(stof(x));
+      data.y.push_back(stof(y));
     }
-    return dot_product;
+    myfile.close();  
+    } else if (mode == "eval")
+    {
+    std::string x;
+    std::ifstream myfile (path);
+    while (getline(myfile, line) )
+    {
+      pos = line.find("\t");
+      x = line.substr(0, pos);
+      data.x.push_back(stof(x));
+    }
+    myfile.close();  
+    }
+    
+    
     
 }

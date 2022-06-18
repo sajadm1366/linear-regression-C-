@@ -49,6 +49,16 @@ float Regressor::getBias()
    return bias;
 }
 
+void Regressor::setWeight(float weights)
+{
+   this->weights = weights;
+}
+
+void Regressor::setBias(float bias)
+{
+   this->bias = bias;
+}
+
 void Regressor::fit(const Data data)
 {
     int iterations = 2000;
